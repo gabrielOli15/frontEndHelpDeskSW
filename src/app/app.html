@@ -11,6 +11,7 @@
         {{p.title}}
       </button>
     </ion-list>
+    <side-menu-content [settings]="sideMenuSettings" [options]="options" (change)="onOptionSelected($event)"></side-menu-content>
   </ion-content>
 
 </ion-menu>

@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>{{ titulo }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+<form [formGroup]="form">
+  <ion-item>
+    <ion-label stacked>Nome</ion-label>
+    <ion-input type="text" formControlName="nome"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label stacked>Descrição</ion-label>
+    <ion-textarea type="text" rows="3" formControlName="descricao"></ion-textarea>
+  </ion-item>
+  <!--ion-item *ngIf="!form.controls.descricao.valid && (form.controls.descricao.dirty || form.controls.descricao.touched)" color="danger">
+    <div [hidden]="!form.controls.descricao.errors.required">
+      O campo descrição é obrigatório
+    </div>
+  </ion-item-->  
+  <button type="button" ion-button color="danger">Cancelar</button>
+  <button type="submit" ion-button color="secondary" [disabled]="!form.valid" (click)="onSubmit()">Confirmar</button>  
+</form>
+</ion-content>

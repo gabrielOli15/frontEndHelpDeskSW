@@ -1,18 +1,42 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary"> 
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title>Helpdesk</ion-title>
   </ion-navbar>
 </ion-header>
-
 <ion-content padding>
-  <h3>Ionic Menu Starter</h3>
-
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
-
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+  <!--ion-searchbar placeholder="Buscar..." (ionInput)="filtrarItens($event)"></ion-searchbar-->
+  <!-- <ion-grid>
+      <ion-row>
+        <ion-col><h6>Nome</h6></ion-col>
+        <ion-col><h6>Descrição</h6></ion-col>        
+        <ion-col></ion-col>
+      </ion-row>
+      <ion-row *ngFor="let chamado of chamados | async">
+          <ion-col>{{chamado.nome}}</ion-col>
+          <ion-col>{{chamado.descricao}}</ion-col>          
+          <ion-col class="iconeDireita">
+            <ion-icon ios="ios-create" md="md-create" title="Editar" (click)="editarChamado(chamado)"></ion-icon>          
+            <ion-icon ios="ios-trash" md="md-trash" title="Excluir" (click)="removerChamado(chamado.key)"></ion-icon>
+          </ion-col>
+      </ion-row>
+  </ion-grid> -->
+  <ion-list>
+    <ion-item-sliding *ngFor="let chamado of chamados | async">
+      <ion-item>
+        <h1>{{ chamado.nome }}</h1>
+        <p>{{ chamado.descricao }}</p>
+      </ion-item>
+      <ion-item-options side="left">
+        <button ion-button color="secondary" (click)="editarChamado(chamado)">
+          <ion-icon name="create"></ion-icon>
+        </button>
+        <button ion-button color="danger" (click)="removerChamado(chamado.key)">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>
